@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+
+        /* Container for the todo list */
+        .container {
+            background-color: #fff;
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        /* Heading */
+        h1 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            text-align: center;
+            color: #333;
+        }
+
+        /* Todo list styles */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        /* List item styles */
+        li {
+            background-color: #f8f8f8;
+            padding: 15px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        /* List item hover state */
+        li:hover {
+            background-color: #eaeaea;
+        }
+
+        /* Task text */
+        li span {
+            flex: 1;
+        }
+
+        /* Edit link styles */
+        a {
+            text-decoration: none;
+            color: #007bff;
+            margin-right: 15px;
+            transition: color 0.3s;
+        }
+
+        /* Edit link hover state */
+        a:hover {
+            color: #0056b3;
+        }
+
+        /* Delete button styles */
+        button {
+            padding: 8px 12px;
+            font-size: 14px;
+            color: #fff;
+            background-color: #dc3545;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        /* Delete button hover state */
+        button:hover {
+            background-color: #c82333;
+        }
+
+        /* Add task link styles */
+        .add-task {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        /* Add task link hover state */
+        .add-task:hover {
+            background-color: #218838;
+        }
+        .y{
+            background-color: #007bff;
+         
+        }
+        .aa{
+            color: white;
+          
+            margin-left: 13px;
+        }
+
+      
+
+        /* Responsive layout */
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            li {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            a, button {
+                margin-top: 10px;
+                width: 100%;
+                text-align: center;
+            }
+
+            a {
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Todo List</h1>
+        <ul>
+            <% todo.forEach(el => { %>
+                <li>
+                    <span><%= el.task %></span>
+                    <div>
+                    <button  class="y"> <a class="aa" href="/edit/<%= el.id %>">Edit</a></button> 
+                        <form action="/delete/<%= el.id %>" method="POST" style="display:inline;">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </div>
+                </li>
+            <% }) %>
+        </ul>
+        <a cla href="/add" class="add-task">Add Task</a>
+    </div>
+</body>
+</html>
