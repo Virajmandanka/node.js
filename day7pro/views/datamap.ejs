@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styled Page</title>
+    <style>
+        /* Body styling */
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Header styling */
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            color: #00aaff;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease-in-out;
+        }
+
+        /* Grid container for cards */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            justify-items: center;
+            margin-top: 50px;
+        }
+
+        /* Item (card) container styling */
+        .item {
+            background-color: #1a1a1a;
+            width: 250px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+            animation: fadeIn 1.5s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Image styling */
+        img {
+            width: 250px;
+            height: 150px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Actions styling (Edit/Delete links) */
+        .actions {
+            margin: 15px 0;
+        }
+
+        a {
+            display: inline-block;
+            margin: 0 10px;
+            padding: 5px 10px;
+            background-color: #00aaff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #0088cc;
+        }
+
+        /* Text styling */
+        h3 {
+            font-size: 18px;
+            color: blue;
+            margin-top: 10px;
+        }
+        p{
+           
+            line-height: 1px;
+        }
+
+        /* Keyframe animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Book store</h1>
+
+    <!-- Grid container to hold all items (cards) -->
+    <div class="grid-container">
+        <% data.map((el) => { %>
+            <div class="item">
+                <img src="<%= el.Img %>" alt="Image">
+                
+                <!-- Proper structure for displaying name, price, date, author -->
+                <h3>Name:- <%= el.Name %></h3>
+                <p>Price:- <%= el.Price %></p>
+                <p>Date:- <%= el.Date %></p>
+                <p>Author:- <%= el.Author %></p>
+
+                <!-- Actions (Edit/Delete buttons) -->
+                <div class="actions">
+                    <a href="/delete/<%= el.id %>">Delete</a>
+                    <a href="/edit/<%= el.id %>">Edit</a>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+
+</body>
+</html>

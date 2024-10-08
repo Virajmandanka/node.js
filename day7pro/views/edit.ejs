@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <form action="/edit/<%= user._id %>" method="post">
+
+     <input type="text" placeholder="Enter you URl" name="Img" value="<%= user.Img %>" >
+     <input type="text" placeholder="Enter you name" name="Name" value="<%= user.Name %>">
+     <input type="text" placeholder="Enter you price" name="Price" value="<%= user.Price %>">
+     <input type="text" placeholder="Enter you date" name="Date" value="<%= user.Date %>">
+     <input type="text" placeholder="Enter you author" name="Author" value="<%= user.Author %>">
+
+   <button type="submit">Update</button>
+
+
+    </form>
+    
+</body>
+</html>
