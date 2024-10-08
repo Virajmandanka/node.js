@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>ram</h1>
+
+
+    <% data.map((el)=>{ %>
+          
+        <h1> <%= el.Email %> - <%= el.password %></h1>  
+        <a href="/delete/<%= el.id %>">Delete</a>
+        <a href="/edit/<%= el.id %>">Edit</a>
+   <% }) %>
+    
+</body>
+</html>
