@@ -1,11 +1,11 @@
 const mongoose=require("mongoose")
 
 
-const  connection=async=>{
+const  connection=async()=>{
 
   try{
 
-    await=mongoose.connect(process.env.MONGOURL)
+    await mongoose.connect(process.env.MONGOURL)
   console.log("database connect")
 
   }
