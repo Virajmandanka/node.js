@@ -1,5 +1,6 @@
 const express=require("express")
 const bcrypt = require('bcrypt');
+const jwt=require("jsonwebtoken")
 const Usermodel = require("../model/usershema");
 
 const Userroute=express.Router();
@@ -55,9 +56,14 @@ Userroute.post("/login",async(req,res)=>{
     if(!data)
     {
         return res.send({error:"password is incorrect"})
-    }
+    }else{
+
+        const token = jwt.sign({userid : user._id}, "NodeJS03")
+        console.log(token)
     
-     res.send({messege:"user login successefully"})
+    return res.send({messege:"user login successefully",token : token})
+
+    }
     
 
 })

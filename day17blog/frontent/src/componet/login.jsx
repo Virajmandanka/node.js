@@ -4,7 +4,6 @@ function Login() {
 
    const [state,setState]=useState({
      
-  
     email:"",
     password:""
    })
@@ -32,6 +31,10 @@ function Login() {
 
     .then((res)=>res.json())
     .then((res)=>{
+
+        localStorage.setItem("token",res.token)
+
+        console.log(res.token)
         if(res.err)
         {
             alert("email not register")
