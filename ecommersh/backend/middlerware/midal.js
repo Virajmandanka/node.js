@@ -1,19 +1,23 @@
 const jwt = require('jsonwebtoken');
 
-const verify=(req,res,next)=>{
-
-    const token=headers.authorization.split("")[1]
-
-    if(token)
-    {
-        let decode=jwt.verify(token,"viraj")
-        req.user=decode
-        next()
+const verify = (req, res, next) => {
+    const authHeader = req.headers.authorization;
+    
+    // Check if the Authorization header exists
+    if (!authHeader || !authHeader.startsWith("Bearer ")) {
+      return res.status(401).json({ msg: "Unauthorized: Missing token" });
     }
-    else{
-        res.send({msg : "Login FIrst"})
+  
+    const token = authHeader.split(" ")[1]; // Correctly extract the token
+  
+    try {
+      const decode = jwt.verify(token, "viraj"); // Replace "viraj" with your secret key
+      req.user = decode; // Attach the decoded user data to `req.user`
+      next(); // Move to the next middleware
+    } catch (err) {
+      return res.status(401).json({ msg: "Unauthorized: Invalid token" });
     }
-}
+  };
 
 const auth=(req,res,next)=>{
     console.log(req.user)

@@ -7,9 +7,9 @@ const pro=mongoose.Schema({
     description :{type:String,require:true},
     image:{type:String,require:true},
     price:{type:String,require:true},
-    adminId:{type:String},
-    category:{type:String},
-    subCategory:{type:String}
+    adminId:{type:mongoose.Schema.Types.ObjectId, ref:"user"},
+    category:{type:mongoose.Schema.Types.ObjectId, ref:"categories"},
+    subCategory:{type:mongoose.Schema.Types.ObjectId, ref:"subcategories"}
 
 })
 
